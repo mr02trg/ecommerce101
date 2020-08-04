@@ -11,3 +11,18 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+
+## Packages
+### `scss`
+npm i node-sass
+### `bootstrap`
+npm i bootstrap
+### `font-awesome`
+npm i --save @fortawesome/fontawesome-svg-core<br />
+npm install --save @fortawesome/free-solid-svg-icons<br />
+npm install --save @fortawesome/react-fontawesome<br />
+[Reference](https://fontawesome.com/how-to-use/on-the-web/using-with/react)
+### `react-router-dom`
+npm i react-router-dom
+

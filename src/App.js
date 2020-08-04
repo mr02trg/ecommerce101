@@ -1,17 +1,34 @@
 import React from 'react';
-import './App.scss';
-import Header from './components/Header/Header';
-import Homepage from './views/Homepage/Homepage';
+import { Switch, Route } from "react-router-dom";
 
-function App() {
-  return (
-    <>
-    <Header />
-      <div className="app">
+import Homepage from './views/Homepage';
+import Maintainance from './views/Maintainance';
+import { HomeLayout, PublicLayout } from './layouts';
+import LoginPage from './views/Auth/Login';
+
+const App = () => (
+  <Switch>
+    <Route exact path="/">
+      <HomeLayout>
         <Homepage />
-      </div>
-    </>
-  );
-}
+      </HomeLayout>
+    </Route>
+
+    <Route path="/login">
+      <PublicLayout>
+        <LoginPage />
+      </PublicLayout>
+    </Route>
+    <Route path="/register">
+    </Route>
+    <Route path="/forgot-password">
+    </Route>
+    <Route path="/reset-password">
+      <HomeLayout>
+        <Maintainance />
+      </HomeLayout>
+    </Route>
+  </Switch>
+);
 
 export default App;
