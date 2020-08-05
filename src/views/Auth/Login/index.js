@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+
+import { auth, GoogleProvider } from 'firebase/utils';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
@@ -20,17 +22,31 @@ const LoginPage = () => {
       .required('Please enter your password')
   });
 
+
+  useEffect(() => {
+    auth.getRedirectResult().then(res => {
+      if (res?.user) {
+        console.log(res.user);
+      }
+    }).catch(error => {
+      console.log(error);
+    });
+  }, []);
+
   const login = values => {
     console.log(values);
   }
 
+  const loginWithGoogle = () => {
+    auth.signInWithRedirect(GoogleProvider);
+  }
+
   return (
-    
     <div className="login-wrapper">
       <div className="card">
         <div className="card-header">
           <div className="social-login">
-            <GoogleIcon className="social-icon" />
+            <GoogleIcon className="social-icon" onClick={loginWithGoogle} />
             <FacebookIcon className="social-icon" />
           </div>
           <h3>Sign In</h3>

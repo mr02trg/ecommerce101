@@ -26,5 +26,6 @@ npm install --save @fortawesome/react-fontawesome<br />
 ### `react-router-dom`
 npm i react-router-dom
 ### `formik`
-npm i formik --save
-npm i yup --save
+npm i formik yup --save
+### `firebase`
+npm i firebase
