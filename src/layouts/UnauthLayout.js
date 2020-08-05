@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
-import './HomeLayout.scss';
+import './UnauthLayout.scss';
 
 const HomeLayout = props => (
   <div className="home-layout">

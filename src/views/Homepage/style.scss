@@ -15,18 +15,18 @@
     justify-content: space-around;
     .btn-lg {
       min-width: 150px;
-      animation: fadein 4s ease-in;
+      animation: fadein 2s ease-in;
     }
     &.buy-dog {
       top: 0;
       background-image: url(../../assets/images/shop_puppy.jpg);
-      animation: expand 3s ease-out;   
+      animation: expand 1.5s ease-out;   
     }
     &.buy-cat {
       left: 50%;
       bottom: 0;
       background-image: url(../../assets/images/shop_kitty.jpg);
-      animation: expand 3s ease-out;   
+      animation: expand 1.5s ease-out;   
     }
   }
   

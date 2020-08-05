@@ -1,9 +1,7 @@
-import HomeLayout from './HomeLayout';
-import PublicLayout from './PublicLayout';
-import MainLayout from './MainLayout';
+import UnauthLayout from './UnauthLayout';
+import AuthLayout from './AuthLayout';
 
 export {
-  HomeLayout,
-  PublicLayout,
-  MainLayout
+  AuthLayout,
+  UnauthLayout
 }

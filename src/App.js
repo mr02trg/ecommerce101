@@ -3,30 +3,32 @@ import { Switch, Route } from "react-router-dom";
 
 import Homepage from './views/Homepage';
 import Maintainance from './views/Maintainance';
-import { HomeLayout, PublicLayout } from './layouts';
+import { AuthLayout, UnauthLayout } from './layouts';
 import LoginPage from './views/Auth/Login';
+import RegisterPage from './views/Auth/Register';
 
 const App = () => (
   <Switch>
     <Route exact path="/">
-      <HomeLayout>
+      <UnauthLayout>
         <Homepage />
-      </HomeLayout>
+      </UnauthLayout>
     </Route>
 
     <Route path="/login">
-      <PublicLayout>
+      <UnauthLayout>
         <LoginPage />
-      </PublicLayout>
+      </UnauthLayout>
     </Route>
     <Route path="/register">
+      <UnauthLayout>
+        <RegisterPage />
+      </UnauthLayout>
     </Route>
-    <Route path="/forgot-password">
-    </Route>
-    <Route path="/reset-password">
-      <HomeLayout>
+    <Route path="*">
+      <UnauthLayout>
         <Maintainance />
-      </HomeLayout>
+      </UnauthLayout>
     </Route>
   </Switch>
 );

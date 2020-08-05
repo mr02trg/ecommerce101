@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
-import './MainLayout.scss';
+import './AuthLayout.scss';
 
 const ShopLayout = props => (
   <div className="h-100">
