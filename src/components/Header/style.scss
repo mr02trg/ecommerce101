@@ -1,8 +1,10 @@
+@import 'global-variables.scss';
+
 .navbar-dark {
   background-color: #131921;
   font-size: 14px;
   z-index: 5;
-  height: 60px !important;
+  height: $header-height !important;
 
   .nav-link {
     font-size: 16px;

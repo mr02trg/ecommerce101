@@ -1,4 +1,6 @@
 
+@import 'global-variables.scss';
+
 .register-wrapper {
   display: flex;
   height: 100%;
@@ -27,14 +29,14 @@
     justify-content: space-between;
     .surname {
       width: 60%;
-      margin-right: 10px;
+      margin-right: 15px;
     }
   }
 
   .input-group-prepend {
     span {
       width: 40px;
-      background-color: #FFC312;
+      background-color: $primary-yellow;
       color: black;
       border:0 !important;
     }
@@ -45,7 +47,7 @@
     &:focus {
       outline: none !important;
       box-shadow: none !important;
-      border-color: #FFC312 !important;
+      border-color: $primary-yellow !important;
     }
   }
   
@@ -54,7 +56,6 @@
     float: right;
   }
 }
-
 
 .card-footer {
   .links {

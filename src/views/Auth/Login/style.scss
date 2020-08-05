@@ -1,4 +1,6 @@
 
+@import 'global-variables.scss';
+
 .login-wrapper {
   display: flex;
   height: 100%;
@@ -29,7 +31,7 @@
     .social-icon {
       width: 50px;
       height: 50px;
-      fill: #FFC312;
+      fill: $primary-yellow;
       background-color: rgba(0,0,0,0.2);
       &:hover {
         fill: white;
@@ -43,7 +45,7 @@
   .input-group-prepend {
     span {
       width: 40px;
-      background-color: #FFC312;
+      background-color: $primary-yellow;
       color: black;
       border:0 !important;
     }
@@ -54,7 +56,7 @@
     &:focus {
       outline: none !important;
       box-shadow: none !important;
-      border-color: #FFC312 !important;
+      border-color: $primary-yellow !important;
     }
   }
   
@@ -64,10 +66,8 @@
   }
 }
 
-
 .card-footer {
   .links {
     color: white;
   }
 }
-

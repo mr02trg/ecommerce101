@@ -25,4 +25,6 @@ npm install --save @fortawesome/react-fontawesome<br />
 [Reference](https://fontawesome.com/how-to-use/on-the-web/using-with/react)
 ### `react-router-dom`
 npm i react-router-dom
-
+### `formik`
+npm i formik --save
+npm i yup --save

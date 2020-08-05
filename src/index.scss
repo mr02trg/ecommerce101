@@ -14,3 +14,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+// common
+.form-error {
+  margin-top: 4px;;
+  color: red;
+  font-weight: 700;
+  white-space: pre-line;
+  font-size: .8em;
+}
