@@ -17,7 +17,7 @@ You will also see any lint errors in the console.
 ### `scss`
 npm i node-sass
 ### `bootstrap`
-npm i bootstrap
+npm i bootstrap react-bootstrap
 ### `font-awesome`
 npm i --save @fortawesome/fontawesome-svg-core<br />
 npm install --save @fortawesome/free-solid-svg-icons<br />
@@ -29,3 +29,5 @@ npm i react-router-dom
 npm i formik yup --save
 ### `firebase`
 npm i firebase
+### `recoil`
+npm i recoil

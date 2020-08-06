@@ -2,8 +2,12 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
 import { auth, GoogleProvider } from 'firebase/utils';
+import { useRecoilState } from 'recoil';
+import userAtom from 'atoms/userAtom';
+import { saveUserToStorage } from 'utils/persistUser';
+
+import history from 'history.js';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
@@ -14,6 +18,8 @@ import './style.scss';
 
 const LoginPage = () => {
 
+  const [, setUser] = useRecoilState(userAtom);
+
   const validationSchema = Yup.object({
     email: Yup.string()
       .email('Please enter a valid email address')
@@ -22,11 +28,22 @@ const LoginPage = () => {
       .required('Please enter your password')
   });
 
+  const handleUserLogin = userData => {
+    saveUserToStorage(userData);
+    setUser(userData);
+  }
 
   useEffect(() => {
     auth.getRedirectResult().then(res => {
       if (res?.user) {
-        console.log(res.user);
+        const signedInUser = {
+          id: res.user.uid,
+          name: res.user.displayName,
+          email: res.user.email,
+          token: res.credential.accessToken
+        }
+        handleUserLogin(signedInUser)
+        history.push('/');
       }
     }).catch(error => {
       console.log(error);

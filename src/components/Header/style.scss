@@ -1,12 +1,18 @@
 @import 'global-variables.scss';
 
-.navbar-dark {
+.my-navbar {
   background-color: #131921;
   font-size: 14px;
   z-index: 5;
   height: $header-height !important;
 
+  .shopping-cart {
+    margin-right: 20px;
+  }
+
   .nav-link {
+    color: $primary-yellow !important;
     font-size: 16px;
+    cursor: pointer;
   }
 }
