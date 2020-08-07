@@ -14,3 +14,8 @@ export const addUser = user => {
     throw error;
   })
 }
+
+export const getUser = uid => {
+  const userRef = firestore.collection('users').doc(uid);
+  return userRef.get();
+}

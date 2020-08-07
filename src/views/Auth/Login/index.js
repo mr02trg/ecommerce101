@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { auth, GoogleProvider } from 'firebase/utils';
-import { addUser } from 'firebase/user';
+import { addUser, getUser } from 'firebase/user';
 import { useRecoilState } from 'recoil';
 import userAtom from 'atoms/userAtom';
 import { saveUserToStorage } from 'utils/persistUser';
@@ -41,19 +41,37 @@ const LoginPage = () => {
           uid: res.user.uid,
           displayName: res.user.displayName,
           email: res.user.email,
-          accessToken: res.credential.accessToken
         }
+        // add user to firestore
         addUser(signedInUser);
         handleUserLogin(signedInUser)
         history.push('/');
       }
     }).catch(error => {
-      console.log(error);
+      throw error;
     });
   }, []);
 
   const login = values => {
-    console.log(values);
+    auth.signInWithEmailAndPassword(values.email, values.password).then(res => {
+      if (res?.user) {
+        // retrieve user data from firestore
+        getUser(res.user.uid).then(doc => {
+          if (doc.exists) {
+            const user = doc.data();
+            const signedInUser = {
+              uid: res.user.uid,
+              displayName: user.displayName,
+              email: user.email,
+            };
+            handleUserLogin(signedInUser);
+            history.push('/');
+          }
+        })
+      }
+    }).catch(error => {
+      throw error;
+    })
   }
 
   const loginWithGoogle = () => {

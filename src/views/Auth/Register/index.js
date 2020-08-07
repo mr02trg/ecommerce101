@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { auth } from 'firebase/utils';
+import { addUser } from 'firebase/user';
+
+import history from 'history.js';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import './style.scss';
@@ -34,7 +38,20 @@ const RegisterPage = () => {
   });
 
   const register = values => {
-    console.log(values);
+    auth.createUserWithEmailAndPassword(values.email, values.password)
+        .then(res => {
+          if (res?.user) {
+            const newUser = {
+              uid: res.user.uid,
+              email: res.user.email,
+              displayName: `${values.firstname} ${values.surname}`
+            };
+            addUser(newUser);
+            history.push('/login');
+          }  
+        }).catch(error => {
+          throw error;
+        })
   }
 
   return (
