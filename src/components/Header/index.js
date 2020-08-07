@@ -33,7 +33,7 @@ const Header = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         {user && (
           <Navbar.Text className="nav-link">
-            Hello, <b>{user.name}</b>
+            Hello, <b>{user.displayName}</b>
           </Navbar.Text>
         )}
         <Navbar.Text>

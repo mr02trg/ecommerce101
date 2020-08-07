@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { auth, GoogleProvider } from 'firebase/utils';
+import { addUser } from 'firebase/user';
 import { useRecoilState } from 'recoil';
 import userAtom from 'atoms/userAtom';
 import { saveUserToStorage } from 'utils/persistUser';
@@ -37,11 +38,12 @@ const LoginPage = () => {
     auth.getRedirectResult().then(res => {
       if (res?.user) {
         const signedInUser = {
-          id: res.user.uid,
-          name: res.user.displayName,
+          uid: res.user.uid,
+          displayName: res.user.displayName,
           email: res.user.email,
-          token: res.credential.accessToken
+          accessToken: res.credential.accessToken
         }
+        addUser(signedInUser);
         handleUserLogin(signedInUser)
         history.push('/');
       }
