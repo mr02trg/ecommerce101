@@ -6,6 +6,8 @@ import { auth } from 'firebase/utils';
 import { addUser } from 'firebase/user';
 
 import history from 'history.js';
+import { notify } from 'utils/notification';
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import './style.scss';
@@ -47,6 +49,7 @@ const RegisterPage = () => {
               displayName: `${values.firstname} ${values.surname}`
             };
             addUser(newUser);
+            notify('success', 'User created successfully');
             history.push('/login');
           }  
         }).catch(error => {

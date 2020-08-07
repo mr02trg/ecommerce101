@@ -31,3 +31,5 @@ npm i formik yup --save
 npm i firebase
 ### `recoil`
 npm i recoil
+### `react-notification-component`
+npm i react-notifications-component
