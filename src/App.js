@@ -6,6 +6,7 @@ import Maintainance from './views/Maintainance';
 import { AuthLayout, UnauthLayout } from './layouts';
 import LoginPage from './views/Auth/Login';
 import RegisterPage from './views/Auth/Register';
+import ShopPage from 'views/Shop';
 
 const App = () => (
   <Switch>
@@ -14,7 +15,6 @@ const App = () => (
         <Homepage />
       </UnauthLayout>
     </Route>
-
     <Route path="/login">
       <UnauthLayout>
         <LoginPage />
@@ -24,6 +24,11 @@ const App = () => (
       <UnauthLayout>
         <RegisterPage />
       </UnauthLayout>
+    </Route>
+    <Route path="/shop">
+      <AuthLayout>
+        <ShopPage />
+      </AuthLayout>
     </Route>
     <Route path="*">
       <UnauthLayout>

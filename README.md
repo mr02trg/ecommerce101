@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Available Scripts
 
 In the project directory, you can run:
 
@@ -12,8 +12,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-
-## Packages
+# Packages
 ### `scss`
 npm i node-sass
 ### `bootstrap`
@@ -33,3 +32,12 @@ npm i firebase
 npm i recoil
 ### `react-notification-component`
 npm i react-notifications-component
+
+
+# Key concept learnt
+### `Higher Order Component`
+#### Learning Materials
+- [Official React Doc](https://reactjs.org/docs/higher-order-components.html)
+- [Example Usage 1](https://www.youtube.com/watch?v=rsBQj6X7UK8)
+#### Key Learning: 
+- Utilise hoc to implement protected route for different user roles
