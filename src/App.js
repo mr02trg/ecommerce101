@@ -7,6 +7,7 @@ import { AuthLayout, UnauthLayout } from './layouts';
 import LoginPage from './views/Auth/Login';
 import RegisterPage from './views/Auth/Register';
 import ShopPage from 'views/Shop';
+import AdminDashboard from 'views/AdminDashboard';
 
 const App = () => (
   <Switch>
@@ -28,6 +29,11 @@ const App = () => (
     <Route path="/shop">
       <AuthLayout>
         <ShopPage />
+      </AuthLayout>
+    </Route>
+    <Route path="/dashboard">
+      <AuthLayout>
+        <AdminDashboard />
       </AuthLayout>
     </Route>
     <Route path="*">
