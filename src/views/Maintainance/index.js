@@ -5,7 +5,7 @@ import './style.scss';
 
 const Maintainence = () => (
   <div class="maintainance-wrapper">
-    <img className="maintainance" src={UnderConstruction} />
+    <img className="maintainance" alt="" src={UnderConstruction} />
   </div>
 );
 

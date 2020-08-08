@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { getUserFromStorage } from 'utils/persistUser';
+import { getUserFromStorage } from 'utils/user.helper';
 
 const userAtom = atom({
   key: 'userState',

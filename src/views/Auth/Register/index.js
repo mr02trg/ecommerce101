@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { auth } from 'firebase/utils';
-import { addUser } from 'firebase/user';
+import { addUser } from 'utils/user.helper';
 
 import history from 'history.js';
 import { notify, NOTIFICATION_TYPE } from 'utils/notification';
@@ -46,7 +46,10 @@ const RegisterPage = () => {
             const newUser = {
               uid: res.user.uid,
               email: res.user.email,
-              displayName: `${values.firstname} ${values.surname}`
+              displayName: `${values.firstname} ${values.surname}`,
+              role: {
+                user: true
+              }
             };
             addUser(newUser);
             notify(NOTIFICATION_TYPE.SUCCESS, 'User created successfully');

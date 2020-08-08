@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import userAtom from 'atoms/userAtom';
-import { clearUserFromStorage } from 'utils/persistUser';
+import { clearUserFromStorage } from 'utils/user.helper';
 import { auth } from 'firebase/utils';
 
 import { Navbar, Nav } from 'react-bootstrap';

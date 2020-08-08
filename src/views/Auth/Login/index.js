@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { auth, GoogleProvider } from 'firebase/utils';
-import { addUser, getUser } from 'firebase/user';
+import { addUser, getUser, saveUserToStorage } from 'utils/user.helper';
 import { useRecoilState } from 'recoil';
 import userAtom from 'atoms/userAtom';
-import { saveUserToStorage } from 'utils/persistUser';
 
 import history from 'history.js';
 
@@ -29,24 +28,42 @@ const LoginPage = () => {
       .required('Please enter your password')
   });
 
-  const handleUserLogin = userData => {
-    saveUserToStorage(userData);
-    setUser(userData);
+  const handleUserLogin = loginResponse => {
+    if (loginResponse?.user) {
+      getUser(loginResponse.user.uid).then(doc => {
+        if (doc.exists) {
+          const user = doc.data();
+          const signedInUser = {
+            uid: user.uid,
+            displayName: user.displayName,
+            email: user.email,
+            role: user.role
+          };
+          saveUserToStorage(signedInUser);
+          setUser(signedInUser);
+        }
+        else {
+          // add user to firestore
+          const signedInUser = {
+            uid: loginResponse.user.uid,
+            displayName: loginResponse.user.displayName,
+            email: loginResponse.user.email,
+            role: {
+              user: true
+            }
+          };
+          addUser(signedInUser);
+          saveUserToStorage(signedInUser);
+          setUser(signedInUser);
+        }
+      })
+      history.push('/');
+    }
   }
 
   useEffect(() => {
     auth.getRedirectResult().then(res => {
-      if (res?.user) {
-        const signedInUser = {
-          uid: res.user.uid,
-          displayName: res.user.displayName,
-          email: res.user.email,
-        }
-        // add user to firestore
-        addUser(signedInUser);
-        handleUserLogin(signedInUser)
-        history.push('/');
-      }
+      handleUserLogin(res);
     }).catch(error => {
       throw error;
     });
@@ -54,21 +71,7 @@ const LoginPage = () => {
 
   const login = values => {
     auth.signInWithEmailAndPassword(values.email, values.password).then(res => {
-      if (res?.user) {
-        // retrieve user data from firestore
-        getUser(res.user.uid).then(doc => {
-          if (doc.exists) {
-            const user = doc.data();
-            const signedInUser = {
-              uid: res.user.uid,
-              displayName: user.displayName,
-              email: user.email,
-            };
-            handleUserLogin(signedInUser);
-            history.push('/');
-          }
-        })
-      }
+      handleUserLogin(res);
     }).catch(error => {
       throw error;
     })
