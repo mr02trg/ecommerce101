@@ -3,43 +3,43 @@ import { Switch, Route } from "react-router-dom";
 
 import Homepage from './views/Homepage';
 import Maintainance from './views/Maintainance';
-import { AuthLayout, UnauthLayout } from './layouts';
+import { MainLayout, FullLayout } from './layouts';
 import LoginPage from './views/Auth/Login';
 import RegisterPage from './views/Auth/Register';
 import ShopPage from 'views/Shop';
-import AdminDashboard from 'views/AdminDashboard';
+import AdminDashboard from 'views/Admin/Dashboard';
 
 const App = () => (
   <Switch>
     <Route exact path="/">
-      <UnauthLayout>
+      <FullLayout>
         <Homepage />
-      </UnauthLayout>
+      </FullLayout>
     </Route>
     <Route path="/login">
-      <UnauthLayout>
+      <FullLayout>
         <LoginPage />
-      </UnauthLayout>
+      </FullLayout>
     </Route>
     <Route path="/register">
-      <UnauthLayout>
+      <FullLayout>
         <RegisterPage />
-      </UnauthLayout>
+      </FullLayout>
     </Route>
     <Route path="/shop">
-      <AuthLayout>
+      <MainLayout>
         <ShopPage />
-      </AuthLayout>
+      </MainLayout>
     </Route>
     <Route path="/dashboard">
-      <AuthLayout>
+      <FullLayout>
         <AdminDashboard />
-      </AuthLayout>
+      </FullLayout>
     </Route>
     <Route path="*">
-      <UnauthLayout>
+      <FullLayout>
         <Maintainance />
-      </UnauthLayout>
+      </FullLayout>
     </Route>
   </Switch>
 );

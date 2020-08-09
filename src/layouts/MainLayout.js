@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from '../components/Header';
-import './AuthLayout.scss';
+import './MainLayout.scss';
 
-const ShopLayout = props => (
+const MainLayout = props => (
   <div className="h-100">
     <Header />
     <div className="main-layout">
@@ -11,4 +11,4 @@ const ShopLayout = props => (
   </div>
 )
 
-export default ShopLayout;
+export default MainLayout;

@@ -1,7 +1,7 @@
-import UnauthLayout from './UnauthLayout';
-import AuthLayout from './AuthLayout';
+import FullLayout from './FullLayout';
+import MainLayout from './MainLayout';
 
 export {
-  AuthLayout,
-  UnauthLayout
+  MainLayout,
+  FullLayout
 }
