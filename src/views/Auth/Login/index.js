@@ -28,12 +28,21 @@ const LoginPage = () => {
       .required('Please enter your password')
   });
 
+  const loginRedirect = user => {
+    if(user?.role['admin']) {
+      history.push('/dashboard');
+    } else {
+      history.push('/');
+    }
+  }
+
   const handleUserLogin = loginResponse => {
     if (loginResponse?.user) {
       getUser(loginResponse.user.uid).then(doc => {
+        let signedInUser;
         if (doc.exists) {
           const user = doc.data();
-          const signedInUser = {
+          signedInUser = {
             uid: user.uid,
             displayName: user.displayName,
             email: user.email,
@@ -44,7 +53,7 @@ const LoginPage = () => {
         }
         else {
           // add user to firestore
-          const signedInUser = {
+          signedInUser = {
             uid: loginResponse.user.uid,
             displayName: loginResponse.user.displayName,
             email: loginResponse.user.email,
@@ -56,8 +65,9 @@ const LoginPage = () => {
           saveUserToStorage(signedInUser);
           setUser(signedInUser);
         }
+
+        loginRedirect(signedInUser);
       })
-      history.push('/');
     }
   }
 
@@ -83,7 +93,7 @@ const LoginPage = () => {
 
   return (
     <div className="login-wrapper">
-      <div className="card">
+      <div className="login-card">
         <div className="card-header">
           <div className="social-login">
             <GoogleIcon className="social-icon" onClick={loginWithGoogle} />

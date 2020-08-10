@@ -1,0 +1,49 @@
+.pet-card-wrapper, .add-pet-card {
+  width: 240px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.add-pet-card {
+  .add-pet {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 240px;
+    .add-pet-img {
+      width: 50%;
+      height: auto;
+    }
+  }
+}
+
+.pet-card-wrapper {
+  .card-img {
+    width: auto;
+    height: 240px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    z-index: 5;
+  }
+  &:hover {
+    .card-img {
+      animation: fadeout 1.5s ease-in forwards;
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      .card-button {
+        margin-top: auto;
+      }
+    }
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    height: 240px;
+  }
+  100% {
+    height: 0;
+  }
+}

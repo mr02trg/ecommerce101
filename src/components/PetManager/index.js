@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
+import PetCard from 'components/PetCard'
+import PetModal from 'components/PetModal';
 
 const PetManager = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <div>
-      Pet Management
-    </div>
+    <>
+      <div className="pet-managemnet">
+        <PetCard addPet={() => setShowModal(true)} />
+      </div>
+      <PetModal show={showModal} close={() => setShowModal(false)}/>
+    </>
   )
 }
 

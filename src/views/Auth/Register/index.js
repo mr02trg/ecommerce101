@@ -62,7 +62,7 @@ const RegisterPage = () => {
 
   return (
     <div className="register-wrapper">
-      <div className="card">
+      <div className="register-card">
         <div className="card-header">
           <h3>Sign Up</h3>
         </div>

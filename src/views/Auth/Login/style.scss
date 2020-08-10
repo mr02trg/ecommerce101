@@ -11,63 +11,65 @@
   background-repeat: no-repeat;
 }
 
-.card {
+.login-card {
   width: 400px;
   background-color: rgba(0,0,0,0.3) !important;
-}
 
-.card-header {
-  position: relative;
-  h3 {
-    color: white;
-  }
-  .social-login {
-    position: absolute;
-    width: 110px;
-    display: flex;
-    justify-content: space-between;
-    top: -23px;
-    right: 10px;
-    .social-icon {
-      width: 50px;
-      height: 50px;
-      fill: $primary-yellow;
-      background-color: rgba(0,0,0,0.2);
-      &:hover {
-        fill: white;
-        cursor: pointer;
+  .card-header {
+    position: relative;
+    h3 {
+      color: white;
+    }
+    .social-login {
+      position: absolute;
+      width: 110px;
+      display: flex;
+      justify-content: space-between;
+      top: -23px;
+      right: 10px;
+      .social-icon {
+        width: 50px;
+        height: 50px;
+        fill: $primary-yellow;
+        background-color: rgba(0,0,0,0.2);
+        &:hover {
+          fill: white;
+          cursor: pointer;
+        }
       }
     }
   }
-}
-
-.card-body {
-  .input-group-prepend {
-    span {
-      width: 40px;
-      background-color: $primary-yellow;
-      color: black;
-      border:0 !important;
+  
+  .card-body {
+    .input-group-prepend {
+      span {
+        width: 40px;
+        background-color: $primary-yellow;
+        color: black;
+        border:0 !important;
+      }
+    }
+    
+    input {
+      height: 45px !important;
+      &:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: $primary-yellow !important;
+      }
+    }
+    
+    .btn {
+      min-width: 100px;
+      float: right;
     }
   }
   
-  input {
-    height: 45px !important;
-    &:focus {
-      outline: none !important;
-      box-shadow: none !important;
-      border-color: $primary-yellow !important;
+  .card-footer {
+    .links {
+      color: white;
     }
-  }
-  
-  .btn {
-    min-width: 100px;
-    float: right;
   }
 }
 
-.card-footer {
-  .links {
-    color: white;
-  }
-}
+

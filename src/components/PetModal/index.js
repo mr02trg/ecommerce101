@@ -4,11 +4,11 @@ import * as Yup from 'yup';
 import Modal from 'react-bootstrap/Modal';
 import './style.scss';
 
-const PetModal = props => {
+const PetModal = ({pet, ...props}) => {
   const validationSchema = Yup.object({
     name: Yup.string()
       .required('This field is required'),
-    desciprtion: Yup.string()
+    description: Yup.string()
       .required('This field is required'),
     price: Yup.number()
       .nullable()
@@ -22,10 +22,14 @@ const PetModal = props => {
   };
 
   return (
-    <Modal show={props.show} onHide={props.handleClose}>
+    <Modal 
+      centered
+      size="lg"
+      show={props.show} 
+      onHide={props.close}>
       <Modal.Header closeButton>
         <Modal.Title>
-          {`${props.mode === 'add' ? 'Add' : 'Edit'} Pet`}
+          {`${pet ? 'Edit' : 'Add'} Pet`}
         </Modal.Title>
       </Modal.Header>
       <Formik
@@ -46,12 +50,12 @@ const PetModal = props => {
               <ErrorMessage name="name" component="div" className="form-error" />
             </div>
             <div className="form-group">
-              <Field type="text" className="form-control" name='description' placeholder="Description" />
+              <Field component="textarea" type="text" rows="5" className="form-control" name='description' placeholder="Description" />
               <ErrorMessage name="description" component="div" className="form-error" />
             </div>
             <div className="form-group">
-              <Field type="number" className="form-control" name='price' placeholder="Name"/>
-              <ErrorMessage name="name" component="div" className="form-error" />
+              <Field type="number" className="form-control" name='price' placeholder="Price"/>
+              <ErrorMessage name="price" component="div" className="form-error" />
             </div>
           </Modal.Body>
           <Modal.Footer>
