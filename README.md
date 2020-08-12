@@ -28,6 +28,8 @@ npm i firebase
 npm i recoil
 ### `react-notification-component`
 npm i react-notifications-component
+### `axios`
+npm i axios
 
 
 # Key concept learnt
@@ -41,3 +43,11 @@ npm i react-notifications-component
 - [Example Usage 1](https://www.youtube.com/watch?v=rsBQj6X7UK8)
 #### Key Learning: 
 - Utilise hoc to implement protected route for user authentication and role based authorization
+
+
+### `Formik deep dive`
+- Demonstrate how to use `setFormField`
+- Implement dependency between form field (e.g. PetType and PetAvatar).<br/>
+On PetType change, PetAvatar will fetch new random image of the selected pet type<br/>
+When data is fetching, PetType will be disabled <br/>
+Refer to `PetModal` and `PetAvatar`components to see this example
